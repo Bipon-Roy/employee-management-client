@@ -27,7 +27,7 @@ const Footer = () => {
 
     return (
         <div className="bg-[#f8f9fa] mt-10">
-            <footer className="footer py-10 px-4 text-base-content max-w-7xl mx-auto">
+            <footer className="footer py-10 px-4 text-base-content max-w-7xl mx-auto place-items-center">
                 <aside>
                     <img src={logo} className="w-20 h-20" alt="" />
                     <p className=" font-semibold">

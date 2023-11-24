@@ -1,4 +1,8 @@
+import axios from "axios";
 import PropTypes from "prop-types";
+
+import { createContext, useEffect, useState } from "react";
+import auth from "../firebase/firebase_config";
 import {
     FacebookAuthProvider,
     GoogleAuthProvider,
@@ -9,13 +13,7 @@ import {
     signOut,
     updateProfile,
 } from "firebase/auth";
-
-import { createContext, useEffect, useState } from "react";
-import auth from "../firebase/firebase_config";
-import axios from "axios";
-
 export const AuthContext = createContext(null);
-
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -94,9 +92,9 @@ const AuthProvider = ({ children }) => {
         loading,
         signInWithFacebook,
     };
+
     return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
-
 AuthProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };

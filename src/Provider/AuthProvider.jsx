@@ -1,4 +1,3 @@
-import axios from "axios";
 import PropTypes from "prop-types";
 
 import { createContext, useEffect, useState } from "react";
@@ -13,10 +12,14 @@ import {
     signOut,
     updateProfile,
 } from "firebase/auth";
+import useAxiosPublic from "../hook/useAxiosPublic";
 export const AuthContext = createContext(null);
+
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const axiosPublic = useAxiosPublic();
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
@@ -52,35 +55,27 @@ const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            const userEmail = currentUser?.email || user?.email;
-            const loggedUser = { email: userEmail };
-            console.log("Changed User", currentUser);
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoading(false);
-
             if (currentUser) {
-                axios
-                    .post("http://localhost:5000/jwt", loggedUser, {
-                        withCredentials: true,
-                    })
-                    .then((res) => {
-                        console.log("token response", res.data);
-                    });
+                // get token and store client
+                const userInfo = { email: currentUser.email };
+                axiosPublic.post("/jwt", userInfo).then((res) => {
+                    if (res.data.token) {
+                        localStorage.setItem("access-token", res.data.token);
+                        setLoading(false);
+                    }
+                });
             } else {
-                axios
-                    .post("http://localhost:5000/logout", loggedUser, {
-                        withCredentials: true,
-                    })
-                    .then((res) => {
-                        console.log(res.data);
-                    });
+                // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
+                localStorage.removeItem("access-token");
+                setLoading(false);
             }
         });
         return () => {
-            unSubscribe();
+            return unsubscribe();
         };
-    }, [user?.email]);
+    }, [axiosPublic]);
 
     const authInfo = {
         createUser,

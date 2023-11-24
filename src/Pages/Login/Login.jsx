@@ -58,7 +58,7 @@ const Login = () => {
                             name="email"
                             type="email"
                             placeholder="Your Email"
-                            className="input w-full bg-white shadow"
+                            className="input w-full input-bordered"
                             required
                         />
                     </div>
@@ -68,7 +68,7 @@ const Login = () => {
                             name="password"
                             type={showPassword ? "text" : "password"}
                             placeholder="Your Password"
-                            className="input w-full bg-white shadow"
+                            className="input w-full input-bordered"
                             required
                         />
                         <span
@@ -92,7 +92,7 @@ const Login = () => {
                         </Link>
                     </div>
                 </form>
-                <SocialLogin />
+                {/* <SocialLogin /> */}
             </div>
         </div>
     );

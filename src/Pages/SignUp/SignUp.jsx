@@ -4,16 +4,13 @@ import useAuth from "../../hook/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { BiLogInCircle } from "react-icons/bi";
-import SocialLogin from "../../Components/SocialLogin";
 import useAxiosPublic from "../../hook/useAxiosPublic";
-import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const image_host_keys = import.meta.env.VITE_IMAGE_HOST_KEY;
 const image_host_api = `https://api.imgbb.com/1/upload?key=${image_host_keys}`;
 
 const SignUp = () => {
     const axiosPublic = useAxiosPublic();
-    const axiosSecure = useAxiosSecure();
 
     const [showPassword, setShowPassword] = useState(false);
     const { createUser, handleUpdateProfile } = useAuth();
@@ -77,7 +74,7 @@ const SignUp = () => {
                     axiosPublic.post("/users", userInfo).then((res) => {
                         if (res.data.insertedId) {
                             console.log("user added to the database");
-                            formData.reset();
+
                             Swal.fire({
                                 icon: "success",
                                 title: "Welcome!",
@@ -206,7 +203,6 @@ const SignUp = () => {
                         </Link>
                     </div>
                 </form>
-                <SocialLogin />
             </div>
         </div>
     );

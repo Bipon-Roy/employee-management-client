@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 const ServiceCard = ({ serviceInfo }) => {
     const { name, users, price, services } = serviceInfo;
     return (
-        <div className="card w-96  bg-base-100 shadow border">
+        <div className="card bg-base-100 shadow border">
             <div className="font-medium text-center space-y-2">
-                <h1 className="text-blue-700 text-3xl uppercase mt-4">{name}</h1>
+                <h1 className="text-blue-700 text-2xl font-semibold uppercase mt-4">{name}</h1>
                 <p className="text-sm">{users}.</p>
-                <p className="text-primary font-bold text-4xl">$ {price}</p>
+                <p className="text-primary font-bold text-4xl">${price}</p>
                 <div className="flex justify-center">
                     <p className="py-1 px-4 border max-w-fit rounded-md">
                         /user /month paid yearly
@@ -30,6 +30,7 @@ const ServiceCard = ({ serviceInfo }) => {
         </div>
     );
 };
+
 ServiceCard.propTypes = {
     serviceInfo: PropTypes.object.isRequired,
 };

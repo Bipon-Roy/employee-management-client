@@ -13,9 +13,9 @@ const Banner = () => {
                 backgroundSize: "cover",
             }}
         >
-            <div className="flex items-center justify-center max-w-7xl mx-auto ">
-                <div className="mx-4 md:mx-0 text-mainText w-full">
-                    <h1 className="text-4xl font-bold mb-4">
+            <div className="flex flex-col md:flex-row items-center justify-center max-w-7xl mx-auto ">
+                <div className="mt-8 mx-5 text-mainText md:w-1/2 lg:w-full">
+                    <h1 className="text-2xl lg:text-4xl font-bold mb-4">
                         Unlock Seamless
                         <span className="text-primary"> Employee Management Solutions.</span>
                     </h1>
@@ -33,7 +33,7 @@ const Banner = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="w-full">
+                <div className="md:w-1/2 lg:w-full">
                     <img src={bannerImg} alt="#EmployeeManagementThumbnail" />
                 </div>
             </div>

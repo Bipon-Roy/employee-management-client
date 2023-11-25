@@ -13,7 +13,10 @@ const Testimonials = () => {
         <div className=" mt-8">
             <div className="my-5 space-y-2 ">
                 <h1 className="text-center font-semibold text-2xl md:text-4xl ">
-                    What Our <span className="text-primary">Clients Says</span>
+                    What Our{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+                        Clients Says
+                    </span>
                 </h1>
                 <p className="text-xs md:text-base w-[400px] md:w-[600px] text-center mx-auto">
                     Discover what our satisfied guests have to say about their experiences with our
@@ -30,7 +33,7 @@ const Testimonials = () => {
                     disableOnInteraction: false,
                 }}
                 modules={[Pagination, Autoplay]}
-                className="mySwiper bg-[#EEF5F9]"
+                className="mySwiper bg-mainBg"
             >
                 <SwiperSlide>
                     <div className="rounded">

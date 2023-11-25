@@ -6,7 +6,7 @@ const Banner = () => {
         <div
             className=""
             style={{
-                backgroundImage:
+                background:
                     "linear-gradient(to bottom, rgba(137, 194, 217, 0.4), rgba(97, 165, 194, 0.1))",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",

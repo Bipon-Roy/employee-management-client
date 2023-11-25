@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 const OsCard = ({ img, text }) => {
     return (
-        <div className="card shadow border">
+        <div className="card">
             <figure className="px-10 pt-10">
                 <img
                     src={img}

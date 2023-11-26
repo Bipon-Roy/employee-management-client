@@ -24,6 +24,7 @@ const SignUp = () => {
         const email = formData.get("email");
         const password = formData.get("password");
         const account_no = formData.get("account_no");
+        const designation = formData.get("designation");
         const salary = formData.get("salary");
         const role = formData.get("role");
         const address = formData.get("address");
@@ -62,6 +63,7 @@ const SignUp = () => {
                 name,
                 email,
                 account_no,
+                designation,
                 salary,
                 role,
                 address,
@@ -142,14 +144,25 @@ const SignUp = () => {
                             />
                         </div>
                     </div>
-                    <div className="form-control">
-                        <input
-                            name="salary"
-                            type="number"
-                            placeholder="Your Salary"
-                            className="input input-bordered w-full  focus:outline-none"
-                            required
-                        />
+                    <div className="flex gap-3 md:gap-6">
+                        <div className="form-control md:w-1/2">
+                            <input
+                                name="designation"
+                                type="text"
+                                placeholder="Your Designation"
+                                className="input input-bordered w-full  focus:outline-none"
+                                required
+                            />
+                        </div>
+                        <div className="form-control md:w-1/2">
+                            <input
+                                name="salary"
+                                type="number"
+                                placeholder="Your Salary"
+                                className="input input-bordered w-full  focus:outline-none"
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="form-control">
                         <label className="label">

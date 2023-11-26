@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home/Home";
 import Contact from "../Pages/Contact/Contact";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
+import Worksheet from "../Pages/Dashboard/Employee/WorkSheet/Worksheet";
 
 export const router = createBrowserRouter([
     {
@@ -40,5 +41,11 @@ export const router = createBrowserRouter([
                 <Dashboard />
             </PrivateRoute>
         ),
+        children: [
+            {
+                path: "worksheet",
+                element: <Worksheet />,
+            },
+        ],
     },
 ]);

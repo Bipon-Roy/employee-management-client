@@ -162,9 +162,7 @@ const SignUp = () => {
                             name="role"
                             className="input input-bordered w-full  focus:outline-none"
                         >
-                            <option value="" disabled>
-                                Choose User Role
-                            </option>
+                            <option value="">Choose User Role</option>
                             <option value="Employee">Employee</option>
                             <option value="HR">HR</option>
                         </select>

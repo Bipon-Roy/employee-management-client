@@ -14,13 +14,13 @@ const Navbar = () => {
                 <NavLink to="/contact">Contact Us</NavLink>
             </li>
 
-            {/* {user && (
+            {user && (
                 <>
                     <li className="mr-5 font-medium">
-                        <NavLink to="/myBookings">My Bookings</NavLink>
+                        <NavLink to="/dashboard">Dashboard</NavLink>
                     </li>
                 </>
-            )} */}
+            )}
         </>
     );
     const handleLogout = () => {

@@ -6,9 +6,10 @@ import { FaHome } from "react-icons/fa";
 import { BsPeopleFill } from "react-icons/bs";
 import { GiProgression } from "react-icons/gi";
 import Sidebar from "./Sidebar";
+import useHR from "../hook/useHR";
 
 const Dashboard = () => {
-    const isHR = false;
+    const [isHR] = useHR();
     const isAdmin = false;
 
     const links = (
@@ -56,15 +57,7 @@ const Dashboard = () => {
                             <BsPeopleFill />
                         </NavLink>
                     </li>
-                    <li className="border-b border-b-secondary pb-1">
-                        <NavLink
-                            className="flex items-center justify-between gap-2"
-                            to="/dashboard/employeeDetails"
-                        >
-                            Employee Details
-                            <TbListDetails />
-                        </NavLink>
-                    </li>
+
                     <li className="border-b border-b-secondary pb-1">
                         <NavLink
                             className="flex items-center justify-between gap-2"
@@ -78,35 +71,37 @@ const Dashboard = () => {
             )}
 
             {/*For Employee */}
-            <>
-                <li className="border-b border-b-secondary pb-1">
-                    <NavLink
-                        className="flex items-center justify-between gap-2"
-                        to="/dashboard/home"
-                    >
-                        User Home
-                        <FaHome />
-                    </NavLink>
-                </li>
-                <li className="border-b border-b-secondary pb-1">
-                    <NavLink
-                        className="flex items-center justify-between gap-2"
-                        to="/dashboard/paymentHistory"
-                    >
-                        Payment History
-                        <MdOutlinePayment />
-                    </NavLink>
-                </li>
-                <li className="border-b border-b-secondary pb-1">
-                    <NavLink
-                        className="flex items-center justify-between gap-2"
-                        to="/dashboard/workSheet"
-                    >
-                        Work Sheet
-                        <GrWorkshop />
-                    </NavLink>
-                </li>
-            </>
+            {!isAdmin && !isHR && (
+                <>
+                    <li className="border-b border-b-secondary pb-1">
+                        <NavLink
+                            className="flex items-center justify-between gap-2"
+                            to="/dashboard/home"
+                        >
+                            User Home
+                            <FaHome />
+                        </NavLink>
+                    </li>
+                    <li className="border-b border-b-secondary pb-1">
+                        <NavLink
+                            className="flex items-center justify-between gap-2"
+                            to="/dashboard/paymentHistory"
+                        >
+                            Payment History
+                            <MdOutlinePayment />
+                        </NavLink>
+                    </li>
+                    <li className="border-b border-b-secondary pb-1">
+                        <NavLink
+                            className="flex items-center justify-between gap-2"
+                            to="/dashboard/workSheet"
+                        >
+                            Work Sheet
+                            <GrWorkshop />
+                        </NavLink>
+                    </li>
+                </>
+            )}
             {/*Shared nav links*/}
 
             <li>

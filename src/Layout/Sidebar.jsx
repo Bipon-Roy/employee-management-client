@@ -2,7 +2,6 @@ import { FaBars } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 const Sidebar = ({ links }) => {
-    console.log(typeof links);
     return (
         <div className="drawer">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />

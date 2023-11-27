@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { MdOutlinePayment } from "react-icons/md";
-import { TbListDetails } from "react-icons/tb";
+
 import { GrWorkshop } from "react-icons/gr";
 import { FaHome } from "react-icons/fa";
 import { BsPeopleFill } from "react-icons/bs";

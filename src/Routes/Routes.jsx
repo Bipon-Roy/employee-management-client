@@ -9,6 +9,8 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import Worksheet from "../Pages/Dashboard/Employee/WorkSheet/Worksheet";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import HrRoute from "./HrRoute";
+import Employees from "../Pages/Dashboard/HR/Employees/Employees";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +52,14 @@ export const router = createBrowserRouter([
             {
                 path: "home",
                 element: <UserHome />,
+            },
+            {
+                path: "employeeList",
+                element: (
+                    <HrRoute>
+                        <Employees />
+                    </HrRoute>
+                ),
             },
         ],
     },

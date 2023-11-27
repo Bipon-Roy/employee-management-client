@@ -82,7 +82,7 @@ const Employees = () => {
     return (
         <div className="p-8">
             <h1 className="text-lg font-medium ml-1 text-mainText">
-                Employees: {employees.length}
+                Total Employees: {employees.length}
             </h1>
             <div className="overflow-x-auto mt-5">
                 <table className="table w-auto ">

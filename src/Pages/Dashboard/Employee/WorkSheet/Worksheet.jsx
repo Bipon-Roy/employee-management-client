@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 
@@ -15,24 +15,34 @@ const Worksheet = () => {
         register,
         handleSubmit,
         reset,
+        setValue,
         formState: { errors },
     } = useForm();
 
     const [date, setDate] = useState(new Date());
     const [refetch, workSheets] = useWorkSheet();
     const axiosSecure = useAxiosSecure();
+    const currentMonth = date.toLocaleString("default", { month: "long" });
+
+    useEffect(() => {
+        setDate(date);
+        setValue("month", currentMonth);
+    }, [date, setValue, currentMonth]);
 
     const onSubmit = (data) => {
         const task = data.task;
         const hours = data.hours;
+        const month = data.month;
 
         const workSheet = {
             employeeName: user.displayName,
             email: user.email,
+            month,
             task,
             hours,
             date,
         };
+
         axiosSecure.post("/worksheet", workSheet).then((res) => {
             if (res.data.insertedId) {
                 Swal.fire({
@@ -49,7 +59,7 @@ const Worksheet = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className="px-8 pt-4">
                 <div className="flex flex-col lg:flex-row gap-5 border p-5">
-                    <div className="form-control lg:w-1/2">
+                    <div className="form-control w-full">
                         <select
                             className="input input-bordered focus:outline-none"
                             {...register("task", { required: true })}
@@ -83,8 +93,20 @@ const Worksheet = () => {
                             onChange={(date) => setDate(date)}
                         />
                     </div>
+                    <div className="form-control">
+                        <input
+                            type="text"
+                            {...register("month", { required: true })}
+                            placeholder="Month"
+                            className="input input-bordered focus:outline-none"
+                            defaultValue={currentMonth}
+                        />
 
-                    <div className="form-control items-">
+                        {errors.month && (
+                            <span className="text-red-600 mt-1 ml-2">Month is required</span>
+                        )}
+                    </div>
+                    <div className="form-control">
                         <input
                             className="bg-gradient-to-r from-cyan-600 to-blue-600 py-3 px-4 rounded-md font-semibold text-white"
                             type="submit"

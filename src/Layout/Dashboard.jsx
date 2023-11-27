@@ -18,6 +18,15 @@ const Dashboard = () => {
                     <li className="border-b border-b-secondary pb-1">
                         <NavLink
                             className="flex items-center justify-between gap-2"
+                            to="/dashboard/home"
+                        >
+                            User Home
+                            <FaHome />
+                        </NavLink>
+                    </li>
+                    <li className="border-b border-b-secondary pb-1">
+                        <NavLink
+                            className="flex items-center justify-between gap-2"
                             to="/dashboard/employeeList"
                         >
                             All Employee List
@@ -29,6 +38,15 @@ const Dashboard = () => {
             {/*For HR */}
             {isHR && (
                 <>
+                    <li className="border-b border-b-secondary pb-1">
+                        <NavLink
+                            className="flex items-center justify-between gap-2"
+                            to="/dashboard/home"
+                        >
+                            User Home
+                            <FaHome />
+                        </NavLink>
+                    </li>
                     <li className="border-b border-b-secondary pb-1">
                         <NavLink
                             className="flex items-center justify-between gap-2"
@@ -61,6 +79,15 @@ const Dashboard = () => {
 
             {/*For Employee */}
             <>
+                <li className="border-b border-b-secondary pb-1">
+                    <NavLink
+                        className="flex items-center justify-between gap-2"
+                        to="/dashboard/home"
+                    >
+                        User Home
+                        <FaHome />
+                    </NavLink>
+                </li>
                 <li className="border-b border-b-secondary pb-1">
                     <NavLink
                         className="flex items-center justify-between gap-2"

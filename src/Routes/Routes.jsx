@@ -8,6 +8,7 @@ import Contact from "../Pages/Contact/Contact";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import Worksheet from "../Pages/Dashboard/Employee/WorkSheet/Worksheet";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
             {
                 path: "worksheet",
                 element: <Worksheet />,
+            },
+            {
+                path: "home",
+                element: <UserHome />,
             },
         ],
     },

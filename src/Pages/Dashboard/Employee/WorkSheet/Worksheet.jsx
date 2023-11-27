@@ -7,8 +7,10 @@ import useWorkSheet from "../../../../hook/useWorkSheet";
 import useAxiosSecure from "../../../../hook/useAxiosSecure";
 import SheetTable from "./SheetTable";
 import Swal from "sweetalert2";
+import useAuth from "../../../../hook/useAuth";
 
 const Worksheet = () => {
+    const { user } = useAuth();
     const {
         register,
         handleSubmit,
@@ -25,6 +27,8 @@ const Worksheet = () => {
         const hours = data.hours;
 
         const workSheet = {
+            employeeName: user.displayName,
+            email: user.email,
             task,
             hours,
             date,

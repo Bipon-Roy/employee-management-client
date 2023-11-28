@@ -42,7 +42,7 @@ const Employees = () => {
                         Swal.fire({
                             icon: "success",
                             title: "Welcome!",
-                            text: "Employee verified Successfully ",
+                            text: "Verified Status Changed Successfully ",
                         });
                     }
                 });

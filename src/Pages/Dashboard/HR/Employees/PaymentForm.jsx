@@ -16,6 +16,8 @@ const PaymentForm = ({ employee }) => {
     const { user } = useAuth();
     const [transactionId, setTransactionId] = useState("");
 
+    const [paymentDisabled, setPaymentDisabled] = useState(false);
+
     const months = [
         "January",
         "February",
@@ -38,6 +40,7 @@ const PaymentForm = ({ employee }) => {
             });
         }
     }, [axiosSecure, salary]);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -50,6 +53,18 @@ const PaymentForm = ({ employee }) => {
             // Stripe.js has not loaded yet. Make sure to disable
             // form submission until Stripe.js has loaded.
             return;
+        }
+
+        const existingPayment = await axiosSecure.post("/payments/check", {
+            salaryOfMonth,
+            year,
+        });
+        if (existingPayment) {
+            setPaymentDisabled(true);
+            setError(existingPayment.data.error);
+            return;
+        } else {
+            setPaymentDisabled(false);
         }
 
         const card = elements.getElement(CardElement);
@@ -105,7 +120,8 @@ const PaymentForm = ({ employee }) => {
                 date: new Date(), // utc date convert. use moment js to
                 year,
             };
-            const res = await axiosSecure.post("/payments", payment);
+
+            const res = await axiosSecure.post("/payments", payment).then();
             console.log("payment saved", res.data);
 
             if (res.data?.paymentResult?.insertedId) {
@@ -169,7 +185,7 @@ const PaymentForm = ({ employee }) => {
                 </div>
 
                 <button
-                    className="btn btn-sm btn-primary mt-4"
+                    className="px-5 py-2 bg-green-600  text-white mt-4"
                     type="submit"
                     disabled={!stripe || !clientSecret}
                 >

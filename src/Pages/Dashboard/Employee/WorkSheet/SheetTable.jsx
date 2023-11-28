@@ -13,6 +13,7 @@ const SheetTable = ({ workSheets }) => {
                             <th>Task</th>
                             <th>Hours</th>
                             <th>Date</th>
+                            <th>Month</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,6 +23,7 @@ const SheetTable = ({ workSheets }) => {
                                 <td>{task.task}</td>
                                 <td>{task.hours}</td>
                                 <td>{task.date.split("T")[0]}</td>
+                                <td>{task.month}</td>
                             </tr>
                         ))}
                     </tbody>

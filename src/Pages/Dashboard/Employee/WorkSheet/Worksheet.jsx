@@ -58,8 +58,8 @@ const Worksheet = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className="px-8 pt-4">
-                <div className="flex flex-col lg:flex-row gap-5 border p-5">
-                    <div className="form-control w-full">
+                <div className="grid lg:grid-cols-5 gap-5 border p-5">
+                    <div className="form-control">
                         <select
                             className="input input-bordered focus:outline-none"
                             {...register("task", { required: true })}
@@ -74,7 +74,7 @@ const Worksheet = () => {
                             <span className="text-red-600 mt-1 ml-2">Task is required</span>
                         )}
                     </div>
-                    <div className="form-control">
+                    <div className="form-control ">
                         <input
                             type="text"
                             {...register("hours", { required: true })}
@@ -86,14 +86,14 @@ const Worksheet = () => {
                             <span className="text-red-600 mt-1 ml-2">Worked Hours is required</span>
                         )}
                     </div>
-                    <div className="form-control">
+                    <div className="form-control ">
                         <DatePicker
-                            className="input input-bordered focus:outline-none w-full lg:w-auto"
+                            className="input input-bordered focus:outline-none w-full lg:w-[160px]"
                             selected={date}
                             onChange={(date) => setDate(date)}
                         />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control ">
                         <input
                             type="text"
                             {...register("month", { required: true })}
@@ -108,7 +108,7 @@ const Worksheet = () => {
                     </div>
                     <div className="form-control">
                         <input
-                            className="bg-gradient-to-r from-cyan-600 to-blue-600 py-3 px-4 rounded-md font-semibold text-white"
+                            className="bg-gradient-to-r from-cyan-600 to-blue-600 py-3 rounded-md font-semibold text-white"
                             type="submit"
                             value="Add Work"
                         />

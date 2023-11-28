@@ -7,10 +7,11 @@ import { BsPeopleFill } from "react-icons/bs";
 import { GiProgression } from "react-icons/gi";
 import Sidebar from "./Sidebar";
 import useHR from "../hook/useHR";
+import useAdmin from "../hook/useAdmin";
 
 const Dashboard = () => {
     const [isHR] = useHR();
-    const isAdmin = false;
+    const [isAdmin] = useAdmin();
 
     const links = (
         <>
@@ -28,7 +29,7 @@ const Dashboard = () => {
                     <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
-                            to="/dashboard/employeeList"
+                            to="/dashboard/allEmployeeList"
                         >
                             All Employee List
                             <BsPeopleFill />

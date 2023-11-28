@@ -10,6 +10,7 @@ import { useState } from "react";
 const Employees = () => {
     const axiosSecure = useAxiosSecure();
     const [employee, setEmployee] = useState({});
+
     const { data: employees = [], refetch } = useQuery({
         queryKey: ["employees"],
         queryFn: async () => {

@@ -1,7 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hook/useAxiosSecure";
 import { useEffect, useState } from "react";
-import useWorkSheet from "../../../../hook/useWorkSheet";
+
 const months = [
     "January",
     "February",
@@ -30,7 +29,7 @@ const Progress = () => {
             .get(`/worksheet?employeeName=${employeeName}&month=${selectedMonth}`)
             .then((res) => {
                 const employeeNames = [...new Set(res.data.map((item) => item.employeeName))];
-                setUniqueEmployee(employeeNames); // Fix: Use setEmployeeNames, not setEmployeeName
+                setUniqueEmployee(employeeNames);
                 setTaskList(res.data);
             })
             .finally(() => {

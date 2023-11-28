@@ -185,9 +185,9 @@ const PaymentForm = ({ employee }) => {
                 </div>
 
                 <button
-                    className="px-5 py-2 bg-green-600  text-white mt-4"
+                    className="btn px-5 py-2 bg-green-600  text-white mt-4"
                     type="submit"
-                    disabled={!stripe || !clientSecret}
+                    disabled={!stripe || !clientSecret || paymentDisabled}
                 >
                     Pay
                 </button>

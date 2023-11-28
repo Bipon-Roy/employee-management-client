@@ -16,7 +16,7 @@ const Dashboard = () => {
         <>
             {isAdmin && (
                 <>
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/home"
@@ -25,7 +25,7 @@ const Dashboard = () => {
                             <FaHome />
                         </NavLink>
                     </li>
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/employeeList"
@@ -39,7 +39,7 @@ const Dashboard = () => {
             {/*For HR */}
             {isHR && (
                 <>
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/home"
@@ -48,7 +48,7 @@ const Dashboard = () => {
                             <FaHome />
                         </NavLink>
                     </li>
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/employeeList"
@@ -58,7 +58,7 @@ const Dashboard = () => {
                         </NavLink>
                     </li>
 
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/progress"
@@ -73,7 +73,7 @@ const Dashboard = () => {
             {/*For Employee */}
             {!isAdmin && !isHR && (
                 <>
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/home"
@@ -82,7 +82,7 @@ const Dashboard = () => {
                             <FaHome />
                         </NavLink>
                     </li>
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/paymentHistory"
@@ -91,7 +91,7 @@ const Dashboard = () => {
                             <MdOutlinePayment />
                         </NavLink>
                     </li>
-                    <li className="border-b border-b-secondary pb-1">
+                    <li className="">
                         <NavLink
                             className="flex items-center justify-between gap-2"
                             to="/dashboard/workSheet"
@@ -116,7 +116,9 @@ const Dashboard = () => {
         <div className="flex max-w-7xl mx-auto">
             {/* dashboard side bar */}
             <div className="hidden lg:block lg:w-72 min-h-screen bg-mainBg">
-                <ul className="px-6 py-4 mt-8  space-y-5  font-medium text-mainText">{links}</ul>
+                <ul className="menu px-6 py-4 mt-8  space-y-5  font-medium text-mainText">
+                    {links}
+                </ul>
             </div>
 
             {/* dashboard content */}

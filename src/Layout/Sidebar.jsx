@@ -17,7 +17,7 @@ const Sidebar = ({ links }) => {
                     aria-label="close sidebar"
                     className="drawer-overlay"
                 ></label>
-                <ul className="px-6 py-4 w-1/2 md:w-72 space-y-5 min-h-screen  bg-mainBg font-medium text-mainText">
+                <ul className="menu px-6 py-4 w-1/2 md:w-72 space-y-5 min-h-screen  bg-mainBg font-medium text-mainText">
                     {/* Sidebar content here */}
                     {/*For Admin */}
                     {links}

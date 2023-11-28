@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hook/useAuth";
 import useAxiosSecure from "../../../../hook/useAxiosSecure";
@@ -5,18 +6,32 @@ import useAxiosSecure from "../../../../hook/useAxiosSecure";
 const PaymentHistory = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 5;
 
-    const { data: payments = [] } = useQuery({
-        queryKey: ["payments", user.email],
+    const { data: { payments = [], totalPayments = 0 } = {} } = useQuery({
+        queryKey: ["payments", user.email, currentPage],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/payments/${user.email}`);
+            const res = await axiosSecure.get(
+                `/payments/${user.email}?page=${currentPage}&pageSize=${pageSize}`
+            );
             return res.data;
         },
     });
 
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage((prevPage) => prevPage - 1);
+        }
+    };
+
+    const handleNextPage = () => {
+        setCurrentPage((prevPage) => prevPage + 1);
+    };
+
     return (
         <div className="p-8">
-            <h2 className="text-xl font-medium mb-4">Total Payments: {payments.length}</h2>
+            <h2 className="text-xl font-medium mb-4">Total Payments: {totalPayments}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead className="text-center">
@@ -39,6 +54,27 @@ const PaymentHistory = () => {
                     </tbody>
                 </table>
             </div>
+            {totalPayments > 5 && (
+                <div className="flex items-center justify-between mt-5">
+                    <button
+                        className={`${
+                            currentPage === 1 ? "bg-gray-400" : "bg-primary"
+                        } px-2 py-1 text-white`}
+                        onClick={handlePrevPage}
+                    >
+                        Previous
+                    </button>
+                    <span>Page {currentPage}</span>
+                    <button
+                        className={`${
+                            pageSize * currentPage >= totalPayments ? "bg-gray-400" : "bg-primary"
+                        } px-2 py-1 text-white`}
+                        onClick={handleNextPage}
+                    >
+                        Next
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

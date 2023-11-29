@@ -1,27 +1,25 @@
 import { NavLink } from "react-router-dom";
 
 import logo from "../../../assets/logo.png";
+import useAuth from "../../../hook/useAuth";
 const Footer = () => {
-    // const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const links = (
         <>
             <li className="mr-5 font-medium">
                 <NavLink to="/">Home</NavLink>
             </li>
             <li className="mr-5 font-medium">
-                <NavLink to="/about">About</NavLink>
-            </li>
-            <li className="mr-5 font-medium">
-                <NavLink to="/rooms">Rooms</NavLink>
+                <NavLink to="/contact">Contact Us</NavLink>
             </li>
 
-            {/* {user && (
+            {user && (
                 <>
                     <li className="mr-5 font-medium">
-                        <NavLink to="/myBookings">My Bookings</NavLink>
+                        <NavLink to="/dashboard/home">Dashboard</NavLink>
                     </li>
                 </>
-            )} */}
+            )}
         </>
     );
 

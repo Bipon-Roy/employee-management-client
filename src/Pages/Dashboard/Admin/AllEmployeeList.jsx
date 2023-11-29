@@ -6,6 +6,7 @@ import { FaFire } from "react-icons/fa";
 import { IoCardOutline } from "react-icons/io5";
 import { useState } from "react";
 import CardView from "./CardView";
+import Swal from "sweetalert2";
 const AllEmployeeList = () => {
     const [cardView, setCardView] = useState(false);
     const [tableView, setTableView] = useState(false);
@@ -19,6 +20,35 @@ const AllEmployeeList = () => {
         },
     });
 
+    const handleMakeHR = (id) => {
+        const role = {
+            role: "HR",
+        };
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to promote him as HR",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Promote!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/employees/promotion/${id}`, role).then((data) => {
+                    console.log(data);
+                    if (data.status === 200) {
+                        refetch();
+                        Swal.fire({
+                            icon: "success",
+                            title: "Welcome!",
+                            text: "Verified Status Changed Successfully ",
+                        });
+                    }
+                });
+            }
+        });
+    };
+
     const handleCardView = () => {
         setTableView(false);
         setCardView(true);
@@ -31,7 +61,7 @@ const AllEmployeeList = () => {
     return (
         <div className="p-8">
             <div className="p-4 border mb-4 flex justify-end">
-                {cardView === false && tableView === true ? (
+                {cardView === false ? (
                     <button
                         onClick={handleCardView}
                         className="flex items-center gap-1 bg-yellow-500 px-3 py-1 font-medium text-white"
@@ -55,7 +85,11 @@ const AllEmployeeList = () => {
             {cardView === true ? (
                 <div className="grid grid-cols-3 gap-5 mt-5">
                     {employees.map((employee) => (
-                        <CardView key={employee._id} employee={employee}></CardView>
+                        <CardView
+                            key={employee._id}
+                            handleMakeHR={handleMakeHR}
+                            employee={employee}
+                        ></CardView>
                     ))}
                 </div>
             ) : (
@@ -84,10 +118,16 @@ const AllEmployeeList = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="flex justify-center">
-                                            <button className="flex items-center bg-orange-500 px-2 py-1 text-white gap-2">
+                                        <div className="flex flex-col items-center gap-2 justify-center">
+                                            <button
+                                                onClick={() => handleMakeHR(employee._id)}
+                                                className="flex items-center bg-orange-500 px-2 py-1 text-white gap-2"
+                                            >
                                                 Make HR <GrUserAdmin />
                                             </button>
+                                            <p className="font-medium bg-mainBg px-1 max-w-fit">
+                                                {employee.role}
+                                            </p>
                                         </div>
                                     </td>
                                     <td>

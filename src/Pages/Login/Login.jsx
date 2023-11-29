@@ -60,8 +60,8 @@ const Login = () => {
 
     return (
         <div className="flex flex-col-reverse md:flex-row justify-center items-center bg-mainBg max-w-7xl mx-auto">
-            <div className="">
-                <img className="" src={loginImage} alt="LoginPageVector" />
+            <div>
+                <img src={loginImage} alt="LoginPageVector" />
             </div>
             <div className="w-full p-8 md:w-3/4 lg:w-1/2">
                 <form className="mx-auto space-y-4" onSubmit={handleLogin}>

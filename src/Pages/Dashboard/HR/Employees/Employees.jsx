@@ -6,6 +6,7 @@ import { TiTick } from "react-icons/ti";
 import Swal from "sweetalert2";
 import Modal from "./Modal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Employees = () => {
     const axiosSecure = useAxiosSecure();
@@ -135,9 +136,11 @@ const Employees = () => {
                                 </td>
                                 <td>
                                     <div className="flex justify-center">
-                                        <button className="bg-gradient-to-r from-cyan-600 to-blue-600 py-1 px-2 flex items-center gap-1 text-white">
-                                            Details <TbListDetails />
-                                        </button>
+                                        <Link to={`/dashboard/employeeList/${employee._id}`}>
+                                            <button className="bg-gradient-to-r from-cyan-600 to-blue-600 py-1 px-2 flex items-center gap-1 text-white">
+                                                Details <TbListDetails />
+                                            </button>
+                                        </Link>
                                     </div>
                                 </td>
                             </tr>

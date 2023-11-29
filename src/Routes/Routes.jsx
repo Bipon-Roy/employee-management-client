@@ -15,6 +15,7 @@ import PaymentHistory from "../Pages/Dashboard/Employee/PaymentHistory/PaymentHi
 import Progress from "../Pages/Dashboard/HR/Progress/Progress";
 import AllEmployeeList from "../Pages/Dashboard/Admin/AllEmployeeList";
 import AdminRoute from "./AdminRoute";
+import Details from "../Pages/Dashboard/HR/EmployeeDetails/Details";
 
 export const router = createBrowserRouter([
     {
@@ -76,6 +77,15 @@ export const router = createBrowserRouter([
                         <Progress />
                     </HrRoute>
                 ),
+            },
+            {
+                path: "/dashboard/employeeList/:id",
+                element: (
+                    <HrRoute>
+                        <Details />
+                    </HrRoute>
+                ),
+                loader: ({ params }) => fetch(`http://localhost:5000/employeeDetails/${params.id}`),
             },
             {
                 path: "allEmployeeList",

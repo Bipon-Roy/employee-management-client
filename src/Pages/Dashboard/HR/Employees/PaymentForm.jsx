@@ -55,18 +55,6 @@ const PaymentForm = ({ employee }) => {
             return;
         }
 
-        const existingPayment = await axiosSecure.post("/payments/check", {
-            salaryOfMonth,
-            year,
-        });
-        if (existingPayment) {
-            setPaymentDisabled(true);
-            setError(existingPayment.data.error);
-            return;
-        } else {
-            setPaymentDisabled(false);
-        }
-
         const card = elements.getElement(CardElement);
 
         if (card == null) {
@@ -84,6 +72,15 @@ const PaymentForm = ({ employee }) => {
         } else {
             console.log("[PaymentMethod]", paymentMethod);
             setError("");
+        }
+
+        const paymentCheck = await axiosSecure.post("/payments/check", { salaryOfMonth, year });
+
+        if (!paymentCheck.data.success) {
+            // Payment check failed, return error message
+            setPaymentDisabled(true);
+            setError(paymentCheck.data.error);
+            return;
         }
 
         //confirm payment
@@ -121,7 +118,7 @@ const PaymentForm = ({ employee }) => {
                 year,
             };
 
-            const res = await axiosSecure.post("/payments", payment).then();
+            const res = await axiosSecure.post("/payments", payment);
             console.log("payment saved", res.data);
 
             if (res.data?.paymentResult?.insertedId) {

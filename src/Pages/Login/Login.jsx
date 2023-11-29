@@ -7,7 +7,6 @@ import loginImage from "../../../src/assets/login.png";
 import Swal from "sweetalert2";
 
 import useAuth from "../../hook/useAuth";
-import SocialLogin from "../../Components/SocialLogin";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -58,7 +57,7 @@ const Login = () => {
                             name="email"
                             type="email"
                             placeholder="Your Email"
-                            className="input w-full input-bordered"
+                            className="input w-full input-bordered focus:outline-none"
                             required
                         />
                     </div>
@@ -68,7 +67,7 @@ const Login = () => {
                             name="password"
                             type={showPassword ? "text" : "password"}
                             placeholder="Your Password"
-                            className="input w-full input-bordered"
+                            className="input w-full input-bordered focus:outline-none"
                             required
                         />
                         <span
@@ -92,7 +91,6 @@ const Login = () => {
                         </Link>
                     </div>
                 </form>
-                {/* <SocialLogin /> */}
             </div>
         </div>
     );

@@ -2,11 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { TiTick } from "react-icons/ti";
 import { GrUserAdmin } from "react-icons/gr";
-import { FaFire } from "react-icons/fa";
+import { FaFire, FaTable } from "react-icons/fa";
 import { IoCardOutline } from "react-icons/io5";
 import { useState } from "react";
 import CardView from "./CardView";
 import Swal from "sweetalert2";
+
 const AllEmployeeList = () => {
     const [cardView, setCardView] = useState(false);
     const [tableView, setTableView] = useState(false);
@@ -58,13 +59,46 @@ const AllEmployeeList = () => {
         setCardView(false);
         setTableView(true);
     };
+
+    const handleMakeFired = (id, name) => {
+        console.log(id);
+
+        const isFired = {
+            isFired: "Fired",
+        };
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: `Do you want to Fire ${name}`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Fire!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/employees/fired/${id}`, isFired).then((data) => {
+                    console.log(data);
+                    if (data.status === 200) {
+                        refetch();
+                        Swal.fire({
+                            icon: "success",
+                            title: "Welcome!",
+                            text: `${name} Fired Successfully `,
+                        });
+                    }
+                });
+            }
+        });
+    };
+
     return (
         <div className="p-8">
             <div className="p-4 border mb-4 flex justify-end">
                 {cardView === false ? (
                     <button
                         onClick={handleCardView}
-                        className="flex items-center gap-1 bg-yellow-500 px-3 py-1 font-medium text-white"
+                        className="flex items-center gap-1 bg-primary px-3 py-1 font-medium text-white"
                     >
                         Card View
                         <IoCardOutline />
@@ -75,7 +109,7 @@ const AllEmployeeList = () => {
                         className="flex items-center gap-1 bg-primary px-3 py-1 font-medium text-white"
                     >
                         Table View
-                        <IoCardOutline />
+                        <FaTable />
                     </button>
                 )}
             </div>
@@ -88,6 +122,7 @@ const AllEmployeeList = () => {
                         <CardView
                             key={employee._id}
                             handleMakeHR={handleMakeHR}
+                            handleMakeFired={handleMakeFired}
                             employee={employee}
                         ></CardView>
                     ))}
@@ -131,10 +166,21 @@ const AllEmployeeList = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <div className="flex justify-center">
-                                            <button className="flex items-center bg-red-600 px-2 py-1 text-white gap-1">
-                                                Fire <FaFire />
-                                            </button>
+                                        <div className="flex text-center justify-center">
+                                            {employee.isFired ? (
+                                                <p className="flex items-center font-semibold text-red-600 px-2 py-1 gap-1">
+                                                    Fired <FaFire />
+                                                </p>
+                                            ) : (
+                                                <button
+                                                    onClick={() =>
+                                                        handleMakeFired(employee._id, employee.name)
+                                                    }
+                                                    className="flex items-center bg-red-600 px-2 py-1 text-white gap-1"
+                                                >
+                                                    Fire <FaFire />
+                                                </button>
+                                            )}
                                         </div>
                                     </td>
                                 </tr>

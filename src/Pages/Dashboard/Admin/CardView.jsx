@@ -3,7 +3,7 @@ import { FaFire } from "react-icons/fa";
 import { TiTick } from "react-icons/ti";
 import PropTypes from "prop-types";
 
-const CardView = ({ employee, handleMakeHR }) => {
+const CardView = ({ employee, handleMakeHR, handleMakeFired }) => {
     const { _id, image, name, designation } = employee;
 
     return (
@@ -26,9 +26,18 @@ const CardView = ({ employee, handleMakeHR }) => {
                     >
                         Make HR <GrUserAdmin />
                     </button>
-                    <button className="flex items-center bg-red-600 px-2 py-1 text-white gap-1">
-                        Fire <FaFire />
-                    </button>
+                    {employee.isFired ? (
+                        <p className="flex items-center font-semibold text-red-600 px-2 py-1 gap-1">
+                            Fired <FaFire />
+                        </p>
+                    ) : (
+                        <button
+                            onClick={() => handleMakeFired(_id, name)}
+                            className="flex items-center bg-red-600 px-2 py-1 text-white gap-1"
+                        >
+                            Fire <FaFire />
+                        </button>
+                    )}
                 </div>
                 <p className="absolute top-0 right-0 font-medium bg-mainBg px-1 max-w-fit">
                     {employee.role}
@@ -40,5 +49,6 @@ const CardView = ({ employee, handleMakeHR }) => {
 CardView.propTypes = {
     employee: PropTypes.object.isRequired,
     handleMakeHR: PropTypes.func.isRequired,
+    handleMakeFired: PropTypes.func.isRequired,
 };
 export default CardView;

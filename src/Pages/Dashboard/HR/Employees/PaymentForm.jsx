@@ -74,7 +74,11 @@ const PaymentForm = ({ employee }) => {
             setError("");
         }
 
-        const paymentCheck = await axiosSecure.post("/payments/check", { salaryOfMonth, year });
+        const paymentCheck = await axiosSecure.post("/payments/check", {
+            email,
+            salaryOfMonth,
+            year,
+        });
 
         if (!paymentCheck.data.success) {
             // Payment check failed, return error message

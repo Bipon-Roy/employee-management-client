@@ -7,20 +7,36 @@ import loginImage from "../../../src/assets/login.png";
 import Swal from "sweetalert2";
 
 import useAuth from "../../hook/useAuth";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { logIn } = useAuth();
+    const { logIn, logOut } = useAuth();
+    const axiosPublic = useAxiosPublic();
 
     const route = useNavigate();
     const location = useLocation();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
         const email = formData.get("email");
         const password = formData.get("password");
+
+        const isFiredResponse = await axiosPublic.post("/employees/isFired", { email });
+
+        console.log(isFiredResponse.data);
+
+        if (!isFiredResponse.data.success) {
+            logOut();
+            Swal.fire({
+                icon: "error",
+                title: "Error!",
+                text: "You are fired! Please contact HR for assistance.",
+            });
+            return;
+        }
 
         logIn(email, password)
             .then((result) => {

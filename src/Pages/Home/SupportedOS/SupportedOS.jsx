@@ -7,11 +7,11 @@ const SupportedOS = () => {
     return (
         <div className="mt-16">
             <div className="flex justify-center mb-3">
-                <p className="bg-mainBg max-w-fit px-3 py-1 text-mainText font-medium rounded-md ">
+                <p className="text-sm md:text-base bg-mainBg max-w-fit px-3 py-1 text-mainText font-medium rounded-md ">
                     Smart Integration Across Platforms
                 </p>
             </div>
-            <h1 className="text-center text-4xl font-semibold">
+            <h1 className="text-center text-3xl md:text-4xl font-semibold">
                 We are {""}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
                     available on

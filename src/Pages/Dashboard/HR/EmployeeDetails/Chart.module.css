@@ -1,0 +1,18 @@
+.chartContainer {
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* For small screens */
+@media (max-width: 767px) {
+    .chartContainer {
+        max-width: 300px;
+    }
+}
+
+/* For medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .chartContainer {
+        max-width: 600px;
+    }
+}

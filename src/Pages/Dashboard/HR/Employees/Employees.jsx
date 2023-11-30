@@ -87,7 +87,7 @@ const Employees = () => {
                 Total Employees: {employees.length}
             </h1>
             <div className="overflow-x-auto mt-5">
-                <table className="table w-auto ">
+                <table className="table">
                     {/* head */}
                     <thead className="text-center">
                         <tr className="text-primary  lg:text-lg font-bold bg-mainBg">

@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import bannerImg from "../../../assets/BannerVector.png";
 import Advertising from "./Advertising";
+import useAuth from "../../../hook/useAuth";
 const Banner = () => {
+    const { user } = useAuth();
     return (
         <div
             className=""
@@ -25,12 +27,21 @@ const Banner = () => {
                         satisfaction with our tailored solutions.
                     </p>
                     <div className="mt-8">
-                        <Link
-                            to="/rooms"
-                            className="border-2 border-primary text-mainText px-10 py-2 text-xl font-semibold"
-                        >
-                            Explore
-                        </Link>
+                        {user ? (
+                            <Link
+                                to="/dashboard/home"
+                                className="border-2 border-primary text-mainText px-10 py-2 text-xl font-semibold"
+                            >
+                                Explore
+                            </Link>
+                        ) : (
+                            <Link
+                                to="/signup"
+                                className="border-2 border-primary text-mainText px-10 py-2 text-xl font-semibold"
+                            >
+                                Explore
+                            </Link>
+                        )}
                     </div>
                 </div>
                 <div className="md:w-1/2 lg:w-full">

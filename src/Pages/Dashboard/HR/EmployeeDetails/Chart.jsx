@@ -2,6 +2,9 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } fro
 import useAxiosSecure from "../../../../hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import styles from "./Chart.module.css";
+
 const colors = [
     "#1f77b4",
     "#ff7f0e",
@@ -28,17 +31,36 @@ const Chart = ({ id }) => {
     });
 
     const data = stats.map((item) => ({
-        month: item.month,
         salary: item.salary,
-        date: item.date.split("-")[0],
-        label: item.month + " " + item.date.split("-")[0],
+        label: item.month.slice(0, 3) + " " + item.date.split("-")[0].slice(2, 4),
     }));
 
+    const [chartWidth, setChartWidth] = useState(1000); // Initial width for larger screens
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setChartWidth(450);
+            } else if (window.innerWidth < 1024) {
+                setChartWidth(600);
+            } else {
+                setChartWidth(1000);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize();
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return (
-        <div>
+        <div className={styles.chartContainer}>
             {data.length > 0 ? (
                 <BarChart
-                    width={1000}
+                    width={chartWidth}
                     height={400}
                     data={data}
                     margin={{
@@ -71,14 +93,16 @@ const Chart = ({ id }) => {
             ) : (
                 <div>
                     <p className="text-center font-semibold text-2xl mt-8">
-                        The User don&apos;t any payment yet!! Please See another..
+                        The User don&apos;t get any payment yet!! Please See another..
                     </p>
                 </div>
             )}
         </div>
     );
 };
+
 Chart.propTypes = {
     id: PropTypes.string.isRequired,
 };
+
 export default Chart;

@@ -37,8 +37,6 @@ const Progress = () => {
             });
     }, [axiosSecure, employeeName, selectedMonth]);
 
-    console.log(uniqueEmployee);
-
     const handleMonthChange = (event) => {
         setSelectedMonth(event.target.value);
     };

@@ -62,8 +62,8 @@ const Navbar = () => {
                     </div>
                     <div className="flex gap-1 items-center py-1">
                         <img src={logo} className="h-10 md:h-13 lg:h-[70px] p-1" alt="NavLogo" />
-                        <p className="text-lg text-primary font-medium">
-                            <span className="text-base">Employee</span> <br />
+                        <p className="text-sm md:text-lg text-primary font-medium">
+                            <span className="text-xs md:text-base">Employee</span> <br />
                             Management
                         </p>
                     </div>

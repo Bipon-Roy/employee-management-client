@@ -7,7 +7,7 @@ const Details = () => {
     const { _id, image, name, designation } = employee;
 
     return (
-        <div className="p-8">
+        <div className="p-4 md:p-8">
             <div className="card border">
                 <div className="avatar flex justify-center mt-5">
                     <div className="w-24 rounded-full">

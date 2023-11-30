@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Sidebar = ({ links }) => {
     return (
-        <div className="drawer">
+        <div className="drawer ">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content pl-8 ">
                 {/* Page content here */}
@@ -11,15 +11,13 @@ const Sidebar = ({ links }) => {
                     <FaBars className="text-xl" />
                 </label>
             </div>
-            <div className="drawer-side z-10">
+            <div className="drawer-side z-10 min-h-screen overflow-hidden">
                 <label
                     htmlFor="my-drawer"
                     aria-label="close sidebar"
                     className="drawer-overlay"
                 ></label>
                 <ul className="menu px-6 py-4 w-1/2 md:w-72 space-y-5 min-h-screen  bg-mainBg font-medium text-mainText">
-                    {/* Sidebar content here */}
-                    {/*For Admin */}
                     {links}
                 </ul>
             </div>

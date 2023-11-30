@@ -8,7 +8,7 @@ const SheetTable = ({ workSheets }) => {
                 <table className="table w-full">
                     {/* head */}
                     <thead className="text-center">
-                        <tr className="text-primary text-lg font-bold bg-mainBg">
+                        <tr className="text-primary md:text-lg font-bold bg-mainBg">
                             <th>#</th>
                             <th>Task</th>
                             <th>Hours</th>
@@ -16,7 +16,7 @@ const SheetTable = ({ workSheets }) => {
                             <th>Month</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-xs md:text-base">
                         {workSheets.map((task, index) => (
                             <tr className="text-center" key={task._id}>
                                 <th>{index + 1}</th>

@@ -35,7 +35,7 @@ const PaymentHistory = () => {
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead className="text-center">
-                        <tr className="text-primary text-lg font-bold bg-mainBg">
+                        <tr className="text-primary md:text-lg font-bold bg-mainBg">
                             <th>#</th>
                             <th>Month</th>
                             <th>Amount</th>
@@ -43,7 +43,7 @@ const PaymentHistory = () => {
                             <th>Transaction Id</th>
                         </tr>
                     </thead>
-                    <tbody className="text-center">
+                    <tbody className="text-center text-xs md:text-base w-auto">
                         {payments.map((payment, index) => (
                             <tr key={payment._id}>
                                 <th>{index + 1}</th>

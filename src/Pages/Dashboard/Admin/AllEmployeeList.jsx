@@ -93,7 +93,7 @@ const AllEmployeeList = () => {
     };
 
     return (
-        <div className="p-8">
+        <div className="px-4 py-2 md:p-8">
             <div className="p-4 border mb-4 flex justify-end">
                 {cardView === false ? (
                     <button
@@ -117,7 +117,7 @@ const AllEmployeeList = () => {
                 Total Employees: {employees.length}
             </h1>
             {cardView === true ? (
-                <div className="grid grid-cols-3 gap-5 mt-5">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
                     {employees.map((employee) => (
                         <CardView
                             key={employee._id}

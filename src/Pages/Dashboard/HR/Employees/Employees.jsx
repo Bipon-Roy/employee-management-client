@@ -82,7 +82,7 @@ const Employees = () => {
     };
 
     return (
-        <div className="p-8">
+        <div className="px-4 py-2 md:p-8">
             <h1 className="text-lg font-medium ml-1 text-mainText">
                 Total Employees: {employees.length}
             </h1>

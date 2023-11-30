@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const SheetTable = ({ workSheets }) => {
     return (
-        <div className="p-8">
+        <div className="px-4 py-2 md:p-8">
             <h2 className="text-xl mb-4">Total Task: {workSheets.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">

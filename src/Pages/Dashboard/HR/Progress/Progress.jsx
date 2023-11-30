@@ -53,7 +53,7 @@ const Progress = () => {
     }
 
     return (
-        <div className="p-8">
+        <div className="px-4 py-2 md:p-8">
             <div className="overflow-x-auto">
                 <div className="border p-4 mb-4 flex flex-col items-center justify-between">
                     <h1 className="mb-4 text-center text-mainText font-medium">Filter Worksheet</h1>

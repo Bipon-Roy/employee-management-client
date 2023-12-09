@@ -1,6 +1,6 @@
 # Employee Management Web App
 
-The Employee Management project is featuring role-based user functionality with firebase and JWT authentication, it provides secure access for users to manage their employees effortlessly. The project built with React (including React Router) Tailwind, Node, Express and MongoDb.
+The Employee Management project is featuring role-based user functionality with firebase and JWT authentication, it provides secure access for users to manage their employees effortlessly.
 
 -   Live_Link: https://ph-employee-management-app.netlify.app
 -   Admin email: admin@gmail.com
@@ -30,3 +30,7 @@ The Employee Management project is featuring role-based user functionality with 
 -   The project supports both login and logout functionality.
 
 -   Users can navigate pages with a smooth UI experience.
+
+### Used Technology
+
+-   React, TailWind, DaisyUi, React Router, ReactQuery(TanStack), Axios, MongoDb, Express, Firebase, Stripe.

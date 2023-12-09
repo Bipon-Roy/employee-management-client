@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-    baseURL: "https://employee-management-server-seven.vercel.app",
+    baseURL: "http://localhost:5000",
 });
 const useAxiosSecure = () => {
     const navigate = useNavigate();

@@ -52,10 +52,10 @@ const UserHome = () => {
     };
     return (
         <>
-            <h1 className="px-8 pt-8 text-3xl font-medium">Hi, Welcome</h1>
+            <h1 className="px-6 lg:px-8 pt-8 text-3xl font-medium">Hi, Welcome</h1>
 
-            <div className="p-8 border m-8">
-                <div className="flex gap-8 justify-center items-center">
+            <div className="p-6 lg:p-8 border m-5 md:m-8">
+                <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
                     <div className="avatar">
                         <div className="">
                             <img src={user.photoURL} alt={user.displayName} />

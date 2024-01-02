@@ -24,6 +24,7 @@ const SignUp = () => {
         const email = formData.get("email");
         const password = formData.get("password");
         const account_no = formData.get("account_no");
+        const phone = formData.get("phone");
         const designation = formData.get("designation");
         const salary = formData.get("salary");
         const role = formData.get("role");
@@ -63,12 +64,14 @@ const SignUp = () => {
                 name,
                 email,
                 account_no,
+                phone,
                 designation,
                 salary,
                 role,
                 address,
                 image: photoURL,
             };
+            console.log(phone);
             createUser(email, password)
                 .then(() => {
                     handleUpdateProfile(name, photoURL);
@@ -117,28 +120,36 @@ const SignUp = () => {
                             />
                         </div>
                     </div>
-
+                    <div className="form-control relative">
+                        <input
+                            name="password"
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Password"
+                            className="input input-bordered w-full bg-white focus:outline-none"
+                            required
+                        />
+                        <span
+                            className="text-lg absolute top-3 right-3"
+                            onClick={() => setShowPassword(!showPassword)}
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                    </div>
                     <div className="flex gap-3 md:gap-6">
-                        <div className="form-control relative md:w-1/2">
-                            <input
-                                name="password"
-                                type={showPassword ? "text" : "password"}
-                                placeholder="Password"
-                                className="input input-bordered w-full bg-white focus:outline-none"
-                                required
-                            />
-                            <span
-                                className="text-lg absolute top-3 right-3"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? <FaEyeSlash /> : <FaEye />}
-                            </span>
-                        </div>
                         <div className="form-control md:w-1/2">
                             <input
                                 name="account_no"
                                 type="number"
                                 placeholder="Your Bank Account Number"
+                                className="input input-bordered w-full bg-white focus:outline-none"
+                                required
+                            />
+                        </div>
+                        <div className="form-control md:w-1/2">
+                            <input
+                                name="phone"
+                                type="number"
+                                placeholder="Your Contact Number"
                                 className="input input-bordered w-full bg-white focus:outline-none"
                                 required
                             />

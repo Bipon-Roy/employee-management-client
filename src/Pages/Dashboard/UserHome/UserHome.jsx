@@ -15,18 +15,8 @@ const UserHome = () => {
     });
 
     const handleUpdateInfo = (id) => {
+        document.getElementById("my_modal_3").showModal();
         console.log(id);
-
-        // axiosSecure.put(`/user/${id}`).then((data) => {
-        //     console.log(data);
-        //     if (data.status === 200) {
-        //         Swal.fire({
-        //             icon: "success",
-        //             title: "Welcome!",
-        //             text: "Information Successfully Updated!",
-        //         });
-        //     }
-        // });
     };
     const handleDeleteUser = (id) => {
         console.log(id);
@@ -52,6 +42,98 @@ const UserHome = () => {
     };
     return (
         <>
+            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+            <dialog id="my_modal_3" className="modal">
+                <div className="modal-box">
+                    <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                            ✕
+                        </button>
+                    </form>
+                    <div>
+                        <form className=" space-y-4" onSubmit={handleUpdateInfo}>
+                            <h1 className="font-bold text-lg text-center mb-4 capitalize">
+                                Update Your Information
+                            </h1>
+
+                            <div className="form-control">
+                                <input
+                                    name="name"
+                                    type="text"
+                                    placeholder="Your Name"
+                                    className="input input-bordered w-full focus:outline-none"
+                                    required
+                                />
+                            </div>
+                            <div className="form-control">
+                                <input
+                                    name="email"
+                                    type="email"
+                                    placeholder="Email"
+                                    className="input input-bordered w-full focus:outline-none"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-control">
+                                <input
+                                    name="account_no"
+                                    type="number"
+                                    placeholder="Your Bank Account Number"
+                                    className="input input-bordered w-full bg-white focus:outline-none"
+                                    required
+                                />
+                            </div>
+                            <div className="form-control">
+                                <input
+                                    name="phone"
+                                    type="number"
+                                    placeholder="Your Contact Number"
+                                    className="input input-bordered w-full bg-white focus:outline-none"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-control">
+                                <input
+                                    name="designation"
+                                    type="text"
+                                    placeholder="Your Designation"
+                                    className="input input-bordered w-full  focus:outline-none"
+                                    required
+                                />
+                            </div>
+                            <div className="form-control">
+                                <input
+                                    name="salary"
+                                    type="number"
+                                    placeholder="Your Salary"
+                                    className="input input-bordered w-full  focus:outline-none"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-control">
+                                <textarea
+                                    rows="4"
+                                    name="address"
+                                    type="number"
+                                    placeholder="Your Address"
+                                    className="pt-1 pl-4 rounded-lg border w-full border-[#D2D4D7] focus:outline-none"
+                                    required
+                                />
+                            </div>
+
+                            <div className="form-control mt-6">
+                                <button className=" py-2 bg-primary uppercase font-medium text-white w-full rounded">
+                                    Update Info
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
             <h1 className="px-6 lg:px-8 pt-8 text-3xl font-medium">Hi, Welcome</h1>
 
             <div className="p-6 lg:p-8 border m-5 md:m-8">

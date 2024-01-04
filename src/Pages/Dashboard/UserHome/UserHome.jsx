@@ -2,11 +2,13 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hook/useAuth";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import UpdateForm from "./UpdateForm";
 
 const UserHome = () => {
     const { user, logOut } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const { data: userInfo = [] } = useQuery({
+
+    const { data: userInfo = [], refetch } = useQuery({
         queryKey: ["userInfo"],
         queryFn: async () => {
             const res = await axiosSecure.get(`/user?email=${user?.email}`);
@@ -14,12 +16,7 @@ const UserHome = () => {
         },
     });
 
-    const handleUpdateInfo = (id) => {
-        document.getElementById("my_modal_3").showModal();
-        console.log(id);
-    };
     const handleDeleteUser = (id) => {
-        console.log(id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -40,6 +37,7 @@ const UserHome = () => {
             }
         });
     };
+
     return (
         <>
             {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -47,90 +45,12 @@ const UserHome = () => {
                 <div className="modal-box">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
-                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-0 top-0">
                             ✕
                         </button>
                     </form>
                     <div>
-                        <form className=" space-y-4" onSubmit={handleUpdateInfo}>
-                            <h1 className="font-bold text-lg text-center mb-4 capitalize">
-                                Update Your Information
-                            </h1>
-
-                            <div className="form-control">
-                                <input
-                                    name="name"
-                                    type="text"
-                                    placeholder="Your Name"
-                                    className="input input-bordered w-full focus:outline-none"
-                                    required
-                                />
-                            </div>
-                            <div className="form-control">
-                                <input
-                                    name="email"
-                                    type="email"
-                                    placeholder="Email"
-                                    className="input input-bordered w-full focus:outline-none"
-                                    required
-                                />
-                            </div>
-
-                            <div className="form-control">
-                                <input
-                                    name="account_no"
-                                    type="number"
-                                    placeholder="Your Bank Account Number"
-                                    className="input input-bordered w-full bg-white focus:outline-none"
-                                    required
-                                />
-                            </div>
-                            <div className="form-control">
-                                <input
-                                    name="phone"
-                                    type="number"
-                                    placeholder="Your Contact Number"
-                                    className="input input-bordered w-full bg-white focus:outline-none"
-                                    required
-                                />
-                            </div>
-
-                            <div className="form-control">
-                                <input
-                                    name="designation"
-                                    type="text"
-                                    placeholder="Your Designation"
-                                    className="input input-bordered w-full  focus:outline-none"
-                                    required
-                                />
-                            </div>
-                            <div className="form-control">
-                                <input
-                                    name="salary"
-                                    type="number"
-                                    placeholder="Your Salary"
-                                    className="input input-bordered w-full  focus:outline-none"
-                                    required
-                                />
-                            </div>
-
-                            <div className="form-control">
-                                <textarea
-                                    rows="4"
-                                    name="address"
-                                    type="number"
-                                    placeholder="Your Address"
-                                    className="pt-1 pl-4 rounded-lg border w-full border-[#D2D4D7] focus:outline-none"
-                                    required
-                                />
-                            </div>
-
-                            <div className="form-control mt-6">
-                                <button className=" py-2 bg-primary uppercase font-medium text-white w-full rounded">
-                                    Update Info
-                                </button>
-                            </div>
-                        </form>
+                        <UpdateForm refetch={refetch} userInfo={userInfo} />
                     </div>
                 </div>
             </dialog>
@@ -158,7 +78,7 @@ const UserHome = () => {
 
                         <div className="pt-3 max-w-fit flex gap-10">
                             <button
-                                onClick={() => handleUpdateInfo(userInfo._id)}
+                                onClick={() => document.getElementById("my_modal_3").showModal()}
                                 className="px-5 py-1 bg-primary text-white"
                             >
                                 Update Information

@@ -1,36 +1,48 @@
 # Employee Management Web App
 
-The Employee Management project is featuring role-based user functionality with firebase and JWT authentication, it provides secure access for users to manage their employees effortlessly.
+The Employee Management project features role-based user functionality with Firebase and JWT authentication, providing secure access for users to manage their employees effortlessly.
 
--   Live_Link: https://ph-employee-management-app.netlify.app
 -   Admin email: admin@gmail.com
-
 -   Admin password: B123456@
 
-## Project Features
+-   [Live_Link](https://ph-employee-management-app.netlify.app)
 
--   Displayed a simple home page with all the information which are relevant to employee management system.
+-   [Server Side Repository](https://github.com/Bipon-Roy/employee-management-server)
 
--   The project has three types of role-based user, to explore the features users have to register first.
+## Key Features
 
--   The project have both JWT and Firebase authentication functionality.
+-   Authentication with JWT; generate access token on local storage at client side on login and remove it on logout.
 
--   There is Dashboard route after register user can navigate through the route.
+-   Different routes and functionality on dashboard for three types of users; admin, employee, HR.
 
--   Dashboard have secure access functionality means user can only access dashboard menus based on their specific roles.
-
--   Users can register as employee or HR based on the role they can explore different dashboard menu.
-
--   The project has also secure login functionality, if a user is not valid he can't access dashboard
-
--   It provides secure access for users to navigate their dashboard pages effortlessly.
-
--   After a successful login, users can see their name and profile picture in the header.
-
--   The project supports both login and logout functionality.
-
--   Users can navigate pages with a smooth UI experience.
+-   Data filtering, Pagination, Payment gateway options.
 
 ### Used Technology
 
 -   React, TailWind, DaisyUi, React Router, ReactQuery(TanStack), Axios, MongoDb, Express, Firebase, Stripe.
+
+## Development Environment Setup Guide
+
+Download the [NodeJS](https://nodejs.org/en) and install it.
+
+# How to run code
+
+## Clone the repository
+
+```sh
+git clone https://github.com/Bipon-Roy/employee-management-client
+```
+
+Now, open the <b>employee-management-client</b> folder in your <b>IDE (VS Code recommended)</b> and run the following commands on <b>terminal (Git Bash)</b>
+
+<b>Using NPM</b>
+
+```bash
+  npm install
+```
+
+```bash
+  npm run dev
+```
+
+You can run the local server on port [5173](http://localhost:5173/). Now, you should have accessed the following URLs on your local server.

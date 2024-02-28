@@ -1,6 +1,6 @@
 import toast, { Toaster } from "react-hot-toast";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
-
+import PropTypes from "prop-types";
 const UpdateForm = ({ userInfo, refetch }) => {
     const { _id, name, email, account_no, phone, designation, salary, address } = userInfo;
     const axiosSecure = useAxiosSecure();
@@ -135,4 +135,7 @@ const UpdateForm = ({ userInfo, refetch }) => {
     );
 };
 
+UpdateForm.propTypes = {
+    refetch: PropTypes.func.isRequired,
+};
 export default UpdateForm;

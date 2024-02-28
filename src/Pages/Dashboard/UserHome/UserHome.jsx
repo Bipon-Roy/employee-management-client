@@ -59,8 +59,12 @@ const UserHome = () => {
             <div className="p-6 lg:p-8 border m-5 md:m-8">
                 <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
                     <div className="avatar">
-                        <div className="">
-                            <img src={user.photoURL} alt={user.displayName} />
+                        <div>
+                            <img
+                                className="h-[300px] w-[300px]"
+                                src={user.photoURL}
+                                alt={user.displayName}
+                            />
                         </div>
                     </div>
                     <div className="space-y-3 font-medium">

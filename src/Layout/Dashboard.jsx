@@ -114,12 +114,10 @@ const Dashboard = () => {
         </>
     );
     return (
-        <div className="flex max-w-7xl mx-auto">
+        <div className="flex">
             {/* dashboard side bar */}
             <div className="hidden lg:block lg:w-72 min-h-screen bg-mainBg">
-                <ul className="menu px-6 py-4 mt-8  space-y-5  font-medium text-mainText">
-                    {links}
-                </ul>
+                <ul className="menu px-6 py-10 space-y-5 font-medium text-mainText">{links}</ul>
             </div>
 
             {/* dashboard content */}

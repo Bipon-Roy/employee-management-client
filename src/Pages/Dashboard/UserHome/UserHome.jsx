@@ -54,10 +54,12 @@ const UserHome = () => {
                     </div>
                 </div>
             </dialog>
-            <h1 className="px-6 lg:px-8 pt-8 text-3xl font-medium">Hi, Welcome</h1>
+            <h1 className="px-6 lg:px-8 pt-8 text-3xl font-medium">
+                Hi, Welcome <span className="text-blue-500">{userInfo.name}</span>
+            </h1>
 
             <div className="p-6 lg:p-8 border m-5 md:m-8">
-                <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+                <div className="flex flex-col md:flex-row gap-8 items-center">
                     <div className="avatar">
                         <div>
                             <img
